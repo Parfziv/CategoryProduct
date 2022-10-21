@@ -21,6 +21,22 @@
                     <small class="form-text text-danger">{{ $message }}</small>
                 @enderror
             </div>
+            <div class="form-group">
+                <label for="category_id">Parent Category</label>
+                <select name="category_id" id="category_id" class="form-control @error('category_id') is-invalid @endif">
+                    <option value="">No Parent</option>
+                    @foreach($categories as $cat)
+                    <option
+                        value="{{ $cat->id }}"
+                        @if($category->category_id == $cat->id ) selected @endif
+                    >{{ $cat->name }}</option>
+                    @endforeach
+                </select>
+                @error('category_id')
+                    <small class="form-text text-danger">{{ $message }}</small>
+                @enderror
+            </div>
+
             <button type="submit" class="btn btn-primary mt-4">
                 <i class="fas fa-user-plus fa-fw mr-1"></i> Update Category
             </button>

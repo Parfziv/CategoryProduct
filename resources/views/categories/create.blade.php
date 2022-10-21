@@ -8,14 +8,24 @@
         </div>
     </div>
     <div class="card-body">
-
         <form action="{{ route('categories.store') }}" method="post">
             @csrf
-
             <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @endif" value="{{ old('name') ?? "" }}">
                 @error('name')
+                    <small class="form-text text-danger">{{ $message }}</small>
+                @enderror
+            </div>
+            <div class="form-group mt-2">
+                <label for="category_id">Parent Category</label>
+                <select name="category_id" id="category_id" class="form-control @error('category_id') is-invalid @endif">
+                    <option value="">No Parent</option>
+                    @foreach($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                </select>
+                @error('category_id')
                     <small class="form-text text-danger">{{ $message }}</small>
                 @enderror
             </div>

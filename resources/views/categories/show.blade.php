@@ -17,6 +17,32 @@
                 <td>Name:</td>
                 <td>{{ $category->name }}</td>
             </tr>
+             <tr>
+                <td>Parent Category: </td>
+                <td>
+                    @if($category->category_id)
+                    <a href="{{ route('categories.show', $category->category_id) }}">{{ $category->category->name }}</a>
+                    @else
+                        No Parent
+                    @endif
+                    </td>
+                </tr>
+                <tr>
+                    <td>Child Categories:</td>
+                    <td>
+                        @if($category->childrens)
+                        <ul>
+                            @foreach($category->childrens as $child)
+                            <li>
+                                <a href="{{ route('categories.show', $child->id) }}">
+                                    {{ $child->name }}
+                                </a>
+                            </li>
+                            @endforeach
+                        </ul>
+                        @endif
+                    </td>
+                </tr>
         </table>
     </div>
 </div>

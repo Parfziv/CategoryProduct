@@ -14,7 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::with('childrens')->get();
         return view('categories.index', compact('categories'));
     }
 
@@ -37,12 +37,12 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $data = $request->validate([
             'name' => 'required',
-            'category_id' => 'nullable'
+            'category_id' => 'nullable|exists:categories,id'
         ]);
 
-        Category::create($request->all());
+        Category::create($data);
 
         return redirect()
             ->route('categories.index')
@@ -81,11 +81,12 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        $request->validate([
+        $data = $request->validate([
             'name' => 'required',
+            'category_id' => 'nullable|exists:categories,id'
         ]);
 
-        $category->update($request->all());
+        $category->update($data);
 
         return redirect()
             ->route('categories.index')

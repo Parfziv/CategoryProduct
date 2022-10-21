@@ -23,6 +23,7 @@
             <tr>
                 <th>ID</th>
                 <th>Name</th>
+                <th>Parent</th>
                 <th>Action</th>
             </tr>
             </thead>
@@ -32,6 +33,12 @@
             <tr>
                 <td>{{ $category->id }}</td>
                 <td>{{ $category->name }}</td>
+                <td>
+                    @if($category->category_id)
+                    <a href="{{ route('categories.show', $category->category_id) }}">{{ $category->category?->name }}</a>
+                    @endif
+                    </td>
+                </td>
                 <td>
                     <a href="{{ route('categories.show', $category->id) }}" class="btn">View</a>
                     <a href="{{ route('categories.edit', $category->id) }}" class="btn">Edit</a>
