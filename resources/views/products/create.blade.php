@@ -1,5 +1,5 @@
 @extends('layout.master')
-
+@section('title', 'Create Product')
 @section('content')
 <div class="card">
     <div class="card-header" style="display: flex; justify-content:space-between;">

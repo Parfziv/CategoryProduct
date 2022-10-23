@@ -19,11 +19,18 @@
                     <small class="form-text text-danger">{{ $message }}</small>
                 @enderror
             </div>
-            <div class="form-group">
+            <div class="form-group mt-2">
+                <label for="price">Price</label>
+                <input type="text" name="price" id="price" class="form-control @error('price') is-invalid @endif" value="{{ old('price') ?? $product->price }}">
+                @error('price')
+                    <small class="form-text text-danger">{{ $message }}</small>
+                @enderror
+            </div>
+            <div class="form-group mt-2">
                 <label for="category_id">Category</label>
                 <select name="category_id" id="category_id" class="form-control @error('category_id') is-invalid @endif">
                     @foreach($categories as $cat)
-                    <option value="{{ $product->category->id }}" @if($cat->category_id == $cat->id ) selected @endif>{{ $cat->name }}</option>
+                    <option value="{{ $cat->id }}" @if($product->category_id == $cat->id ) selected @endif>{{ $cat->name }}</option>
                     @endforeach
                 </select>
                 @error('category_id')

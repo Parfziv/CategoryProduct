@@ -1,4 +1,5 @@
 @extends('layout.master')
+@section('title', 'All Products')
 @section('js')
 <script>
     function deleteProduct(id) {
