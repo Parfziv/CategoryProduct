@@ -1,6 +1,7 @@
 @extends('layout.master')
 @section('title', 'Edit Product')
 @section('content')
+<x-alert/>
 <div class="card">
     <div class="card-header" style="display: flex; justify-content: space-between;">
         <h3 class="card-title" style="font-size:1.5em;font-weight: bold">Edit Product: {{ $product->name }}</h3>

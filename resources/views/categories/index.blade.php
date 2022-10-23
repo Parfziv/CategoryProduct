@@ -10,6 +10,7 @@
 </script>
 @endsection
 @section('content')
+<x-alert/>
 <div class="card">
     <div class="card-header" style="display: flex; justify-content:space-between;">
         <h3 class="card-title" style="font-size:1.5em;font-weight: bold">All Categories</h3>
